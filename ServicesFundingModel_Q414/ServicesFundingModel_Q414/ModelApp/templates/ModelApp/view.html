@@ -1,0 +1,67 @@
+{% extends "ModelApp/base.html" %}
+
+{% block title %}AKAMSVCS | View{% endblock %}
+
+{% block menu %}
+	<li><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+	<li><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+	<li><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+	<li class="current_page_item"><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+	<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+	<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+	<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+	<div id="three-column" class="container">
+		<div id="tbox1"> <span class="icon icon-group"></span>
+			<div class="title">
+				<h2>Headcount</h2>
+			</div>
+			<p><strong>Headcount</strong> contains all function efficiency assumptions.  This includes billability and time to productivity by role and region.</p>
+			
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Select Element</option>
+				<option value="function/Global">Function</option>
+				<option value="#">Headcount</option>
+			</select>
+		</div>
+			
+			<style type="text/css">     
+				select {
+					height:50px;
+					width:300px;
+				}
+			</style>
+			
+		<div id="tbox2"> <span class="icon icon-shopping-cart"></span>
+			<div class="title">
+				<h2>Product</h2>
+			</div>
+			<p><strong>Product</strong> contains all Platform and Services product assumptions.  This includes integration LoE, Services ARPU's and ESR's.</p>
+
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Select Element</option>
+				<option value="product/Platform">Platform Products</option>
+				<option value="product/Services MRR">Services MRR</option>
+				<option value="product/Services NRR">Services NRR</option>
+			</select>	
+		</div>
+	
+		<div id="tbox3"> <span class="icon icon-umbrella"></span>
+			<div class="title">
+				<h2>Forecast</h2>
+			</div>
+			<p><strong>Forecast</strong> contains all user generated Platform and Services product forecasts.  Users have the ability to drill down by product and region.</p>
+			
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Select Element</option>
+				<option value="frcst/Contract MRR/Global">Contract MRR</option>
+				<option value="frcst/Platform/Global">Product Frcst</option>
+				<option value="frcst/Services MRR/Global">Services MRR Frcst</option>
+				<option value="frcst/Services NRR/Global">Services NRR Frcst</option>
+			</select>
+			
+		</div>
+	</div>
+{% endblock %}

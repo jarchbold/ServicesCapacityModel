@@ -1,0 +1,67 @@
+{% extends "ModelApp/base.html" %}
+
+{% block title %}Setup | {{name}}{% endblock %}
+
+{% block menu %}
+	<li><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+	<li><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+	<li  class="current_page_item"><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+	<li><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+	<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+	<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+	<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+{% endblock %}
+
+
+{% block content %}
+	<div id="three-column" class="container">
+		<div id="tbox1"> <span class="icon">1</span>
+			<div class="title">
+				<h2>Build</h2>
+			</div>
+			<p>Build the <strong>{{name}}</strong> file and save it to your local machine (remember to note the directory as you will need to access it later).</p>
+			<p><font size=2>File templates are always available to download <a href="template" style="text-decoration:none";>here</a>.</font size></p>
+		</div>
+		<div id="tbox2"> <span class="icon">2</span>
+			<div class="title">
+				<h2>Check!</h2>
+			</div>
+			<p>Ensure that all <a href="JavaScript:newPopup('instructions');" style="text-decoration:none";>instructions</a> are followed explicitly and that the <strong>{{name}}</strong> file is saved as <strong>".xls"</strong> (that's <strong>2003 Excel</strong> format).</p>
+		</div>
+		<div id="tbox3"> <span class="icon">3</span>
+			<div class="title">
+				<h2>Upload</h2>
+			</div>
+			<p>Use the <b>Choose File</b> button below to navigate to the directory where you saved the <strong>{{name}}</strong> file and click <b>Open</b>.  Once selected, click the <b>Upload</b> button to upload the <strong>{{name}}</strong> file.</p>
+	
+			<!-- Upload form. Note enctype attribute! -->
+			<form action="{% url name name %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<p>{{ form.non_field_errors }}</p>
+				<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+				<p>
+					{{ form.docfile.errors }}
+					{{ form.docfile }}
+					
+				<input type="submit" value="Upload"/>
+				</p>
+			</form>
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}	
+		</div> 
+	</div>
+	
+	<script type="text/javascript">
+		// Popup window code
+		function newPopup(url) {
+			popupWindow = window.open(
+				url,'popUpWindow','height=500,width=500,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+		}
+	</script>
+			
+{% endblock %}

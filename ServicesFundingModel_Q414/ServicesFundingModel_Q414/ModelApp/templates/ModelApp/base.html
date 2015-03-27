@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+	<link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}fonts.css" rel="stylesheet" type="text/css" media="all"/>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<script src="http://malsup.github.com/chili-1.7.pack.js"></script>
+	<script src="{{ STATIC_URL }}subMenu.js"></script>
+	<script src="{{ STATIC_URL }}blockUI.js"></script>
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><span class="icon icon-globe icon-size"></span><a href="/ServicesFundingModel/home">AKAM<span>SVCS</span></a></h1>
+	<p>service operations | web applications</p>
+</div>
+<div id="wrapper" class="container">
+	<div id="menu" class="container">
+		<ul class="block1">
+			{% block menu %}{% endblock %}
+		</ul>
+	</div>
+	 {% block content %}{% endblock %}
+</div>
+<div id="copyright">
+	<p>Service Operations Web Applications | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

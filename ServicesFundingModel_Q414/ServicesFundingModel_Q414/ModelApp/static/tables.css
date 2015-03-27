@@ -1,0 +1,33 @@
+/*********************************************************************************/
+/* Tables                                                                      */
+/*********************************************************************************/
+
+	.TFtable
+	{
+		table-layout: fixed;
+		width: 100%; 
+		border-collapse: collapse; 
+		margin-left:10px;
+		border: 2px outset #cccccc;
+	}
+	
+	.TFtable td
+	{ 
+		padding:7px;
+		border: 1px solid #cccccc;
+	}
+
+	.TFtable tr:nth-child(odd)
+	{ 
+		background: #fbfbfb;
+	}
+			
+	.TFtable tr:nth-child(even)
+	{
+		background: #;
+	}
+	
+	.TFtable tr:hover
+	{
+		background: #78DDFF;
+	}

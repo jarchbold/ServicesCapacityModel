@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>AKAMSVCS | Run</title>
+	<link href="{{ STATIC_URL }}style2.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}fonts.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}tables.css" rel="stylesheet" type="text/css" media="all"/>
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><span class="icon icon-globe icon-size"></span><a href="/home">AKAM<span>SVCS</span></a></h1>
+	<p>service operations | web applications</p>
+</div>
+<div id="wrapper" class="container">
+	<div id="menu" class="container">
+		<ul>
+			<li><a href="/home" accesskey="1" title="">Home</a></li>
+			<li><a href="/about" accesskey="2" title="">About</a></li>
+			<li><a href="/setup" accesskey="3" title="">Model Setup</a></li>
+			<li class="current_page_item"><a href="/run/Global" accesskey="4" title="">Model Run</a></li>
+			<li><a href="/admin" accesskey="5" title="">Admin Site</a></li>
+			<li><a href="/contact" accesskey="6" title="">Contact</a></li>
+		</ul>
+	</div>
+	<div id="three-column" class="container">
+	
+	
+	<style type="text/css">   	
+		input[type='range'] {
+			-webkit-appearance: none !important;
+			background:;
+			height:15px;
+		}
+			input[type='range']::-webkit-slider-thumb {
+			-webkit-appearance: none !important;
+			background:blue;
+			border-radius:2px;
+			height:19px;
+			width:10px;
+		}
+	</style>
+	<input type="range" min="0" max="50" value="0" step="5" onchange="showValue(this.value)" class="button"></input>
+<span id="range">0</span>
+<script type="text/javascript">
+function showValue(newValue)
+{
+	document.getElementById("range").innerHTML=newValue;
+}
+</script>
+		<div id="tbox1"></span>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Geography</option>
+				{% for geo in geos %}
+					<option value="/run/{{geo}}">{{geo}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Division</option>
+				{% for division in divisions %}
+					<option value="{{division}}">{{division}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Region</option>
+				{% for region in regions %}
+					<option value="{{region}}">{{region}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Area</option>
+				{% for area in areas %}
+					<option value="{{area}}">{{area}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Territory</option>
+				{% for territory in territories %}
+					<option value="/run/{{territory}}">{{territory}}</option>
+				{% endfor %}
+			</select>
+		</div>
+			
+			<style type="text/css">     
+				select {
+					height:35px;
+					width:150px;
+				}
+			</style>
+		<div style="float:left;">
+			
+		<br></br>
+		
+		<div class="title">
+			<h2><font color="grey">{{level}} |</font> {{mapping}}</h2>
+		</div>
+			
+			<table class="TFtable" style="width:1100px">
+			<tr>
+				<td></td>
+				{% for key,value in years.items %}
+					{% for v in value %}
+						<td><strong>{{key}}</strong></td>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+			<tr>
+				<td></td>
+				{% for key,value in years.items %}
+					{% for key,value in value.items %}
+						<td>Q{{key}}</td>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+				{% for key,value in headcounts.items %}
+					<tr>
+					<td>{{key}}</td>
+					{% for key,value in value.items %}
+						{% for key,value in value.items %}
+							<td>{{value}}</td>
+						{% endfor %}
+					{% endfor %}
+					</tr>		
+				{% endfor %}
+			<tr>
+				<td><strong>TOTAL</strong></td>
+				{% for key,value in totals.items %}
+					{% for key,value in value.items %}
+						<td><strong>{{value}}</strong></td>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+			</table>
+		</div>
+		</div>
+		
+		<style type="text/css">     
+			table {
+				margin-left:10px;
+				border: 2px outset #cccccc;
+				border-collapse: collapse;
+			}
+		</style>
+
+		<style type="text/css">  
+			td {
+				border: 1px solid #cccccc;
+			}
+		</style>
+
+		<style type="text/css">
+			.TFtable{
+				width:100%; 
+				border-collapse:collapse; 
+			}
+			.TFtable td{ 
+				padding:7px;
+			}
+
+			.TFtable td:nth-child(odd){ 
+				background: #fbfbfb;
+			}
+			
+			.TFtable td:nth-child(even){
+				background: #;
+			}
+		</style>
+	</div>
+</div>
+<div id="copyright">
+	<p>A Joshua Archbold Production | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

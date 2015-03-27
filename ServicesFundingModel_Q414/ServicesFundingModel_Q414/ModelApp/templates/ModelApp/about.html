@@ -1,0 +1,55 @@
+{% extends "ModelApp/base.html" %}
+
+{% block title %}AKAMSVCS | About{% endblock %}
+
+{% block menu %}
+	<li><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+	<li class="current_page_item"><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+	<li><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+	<li><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+	<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+	<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+	<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+	<div><span class="arrow-down"></span></div>
+	<div id="page">
+		<div id="box1">
+			<div class="title">
+				<h2>Web Applications</h2>
+				<span class="byline">Joshua Archbold | Program Manager</span> </div>
+			<p>The <strong>Services Capacity Model</strong> web application is an environment specifically designed to facilitate Services capacity modelling efforts.  If you are new to the enviornment, (or are simply in need of a refresher course), please refer to the model <a href="#" style="text-decoration:none";>instructions</a>.  Comments, questions, and/or inquiries into future <strong>Services Web Applications</strong> should be addressed directly to Joshua Archbold (<a href="mailto:jarchbol@akamai.com" style="text-decoration:none";>jarchbol@akamai.com</a>).</p>
+		</div>
+		<div id="box2">
+			<div class="title">
+				<h2>Guiding Principles</h2>
+				<span class="byline">Adam Karon | SVP Global Services & Support</span> </div>
+			<p>The <strong>Services Capacity Model</strong> follows the core philosophy that every product sold requires some professional services, (either during initial installation or ongoing maintenance), and that every consultant has finite bandwidth based on target utilization rates.  These two components represent the demand and supply side of the model, respectively, and are at the heart of its functionality.  For more information on <strong>Model Principles</strong> please consult with your local SD-Ops representative.</p>	
+		</div>
+	</div>
+	<div id="page">
+		<div class="title">
+			<h2><font size=4>Major Contributions</font size></h2>
+			<span class="byline">
+				<table style="width:455px">
+				<tr>
+					<td style="height:45px">
+					Joshua Archbold
+					</td>
+					<td>
+					Site Design & Architecture
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Donny "Fat Don" Yi
+					</td>
+					<td>
+					Collaborative Inspiration
+					</td>
+				</tr>
+				</table>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "ModelApp/base.html" %}
+
+{% block title %}AKAMSVCS | Home{% endblock %}
+
+{% block menu %}
+	<li class="current_page_item"><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+	<li><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+	<li><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+	<li><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+	<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+	<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+	<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+	<div id="three-column" class="container">
+		<div id="tbox1"> <a href="/ServicesFundingModel/setup" style="text-decoration:none";><span class="icon icon-wrench block1"></span></a>
+			<div class="title">
+				<h2>Setup</h2>
+			</div>
+			<p><strong>Model Setup</strong> will guide users through the process of preparing the model for future use, as well as any updates to the current environment.</p>
+			</div>
+		<div id="tbox2"> <a href="/ServicesFundingModel/view" style="text-decoration:none";><span class="icon icon-eye-open block1"></span></a>
+			<div class="title">
+				<h2>View</h2>
+			</div>
+			<p><strong>Model View</strong> will allow users to inspect all elements of the current configuration, as well as review any updates processed during <strong>Setup</strong>.</p>
+			</div>
+		<div id="tbox3"> <a href="/ServicesFundingModel/run/Global" style="text-decoration:none";><span class="icon icon-cogs block1"></span></a>
+			<div class="title">
+				<h2>Run</h2>
+			</div>
+			<p><strong>Model Run</strong> will produce the results of the current configuration.  Users have the ability to drill down by region and by function.</p>
+			</div>
+	</div>
+{% endblock %}

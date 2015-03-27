@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>View | Function </title>
+	<link href="{{ STATIC_URL }}style2.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}fonts.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}tables.css" rel="stylesheet" type="text/css" media="all"/>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<script src="http://malsup.github.com/chili-1.7.pack.js"></script>
+	<script src="{{ STATIC_URL }}subMenu.js"></script>
+	<script src="{{ STATIC_URL }}blockUI.js"></script>
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><span class="icon icon-globe icon-size"></span><a href="/ServicesFundingModel/home">AKAM<span>SVCS</span></a></h1>
+	<p>service operations | web applications</p>
+</div>
+<div id="wrapper" class="container">
+	<div id="menu" class="container">
+		<ul class="block1">
+			<li><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+			<li><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+			<li><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+			<li class="current_page_item"><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+			<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+			<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+			<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+		</ul>
+	</div>
+	<div id="three-column" class="container">
+		<div id="tbox1"></span>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Geography</option>
+				{% for geo in geos %}
+					<option value="/ServicesFundingModel/view/function/{{geo}}/">{{geo}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Division</option>
+				{% for division in divisions %}
+					<option value="/ServicesFundingModel/view/function/{{division}}/">{{division}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Region</option>
+				{% for region in regions %}
+					<option value="/ServicesFundingModel/view/function/{{region}}/">{{region}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Area</option>
+				{% for area in areas %}
+					<option value="/ServicesFundingModel/view/function/{{area}}/">{{area}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Territory</option>
+				{% for territory in territories %}
+					<option value="/ServicesFundingModel/view/function/{{territory}}/">{{territory}}</option>
+				{% endfor %}
+			</select>
+		</div>
+			<style type="text/css">     
+				select {
+					height:35px;
+					width:150px;
+				}
+			</style>
+		<div style="float:left;">
+					
+		<p></p>			
+					
+		<div style="float:left;">
+		<font size=1, color="red"><i><b>Role properties will populate for lowest GDRAT level selected.  If more than one role property exists for a GDRAT level, the most recently updated role properties will populate.
+		</b></i></font>
+		</div>
+		
+		<br></br>
+		
+		<div class="title">
+			<h2><font color="grey">{{level}} |</font> {{mapping}}
+		</div>
+
+			<table class="TFtable" style="width:1100px">
+			<col width=220>
+			<tr>
+				<td></td>
+				{% for label in labels %}
+					<td>{{label}}</td>
+				{% endfor %}
+			</tr>
+				{% for key,value in roles.items %}
+				<tr>
+					<td align="left">{{key}}</td>
+					{% for attribute in value %}
+						<td>{{attribute}}</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+		{% if instances %}
+			<div style="float:left;">
+			<p></p>
+			<font size=1, color="red"><i><b>The following roles contain more than one role property instance for {{level}} = {{mapping}}:
+			{{instances}}
+			</b></i></font>
+			</div>
+		{% endif %}
+		
+		</div>
+
+</div>
+</div>
+<div id="copyright">
+	<p>Service Operations Web Applications | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>View | {{product}} Assumptions</title>
+	<link href="{{ STATIC_URL }}style3.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}fonts.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}tables.css" rel="stylesheet" type="text/css" media="all"/>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<script src="http://malsup.github.com/chili-1.7.pack.js"></script>
+	<script src="{{ STATIC_URL }}subMenu.js"></script>
+	<script src="{{ STATIC_URL }}blockUI.js"></script>
+
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><span class="icon icon-globe icon-size"></span><a href="/ServicesFundingModel/home">AKAM<span>SVCS</span></a></h1>
+	<p>service operations | web applications</p>
+</div>
+
+<div id="wrapper" class="container">
+	<div id="menu" class="container">
+		<ul>
+			<li><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+			<li><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+			<li><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+			<li class="current_page_item"><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+			<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+			<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+			<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+		</ul>
+	</div>
+	
+	<div id="three-column" class="container">
+	
+	<font size=1>
+	<div id="open" class="title">
+	<div id="sub-menu">
+	Toggle Product Menu
+	</div>
+	</div>
+
+	<div id="panel">
+		<div id="menu2">
+		<ul class="block1">
+		<li><a href= {% url 'product' product %} style="text-decoration:none">{{product}} Product Properties</a></li>
+		<li><a href= {% url 'workingValue' product %} style="text-decoration:none">{{product}} Product Role Allocations</a></li>
+		<li><a href= {% url 'forecast' product 'Global' %} style="text-decoration:none">{{product}} Product Forecast</a></li>
+		</ul>
+		</div>
+		<div id="close">
+		(click to close)
+		</div>
+	</div>
+	</font>
+	
+		<div id="tbox1"></span>
+		<div style="float:left; width:180px;">
+		<div style="float:left;">
+					
+		<div class="title">
+			<h2>{{product}} Products</h2>
+		</div>
+
+			<table class="TFtable" style="width:1100px">
+			<col width=220>
+			<tr>
+				<td></td>
+				{% for label in labels %}
+					<td>{{label}}</td>
+				{% endfor %}
+			</tr>
+				{% for key,value in products.items %}
+				<tr>
+					<td align="left">{{key}}</td>
+					{% for attribute in value %}
+						<td>{{attribute}}</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+<div id="copyright">
+	<p>Service Operations Web Applications | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

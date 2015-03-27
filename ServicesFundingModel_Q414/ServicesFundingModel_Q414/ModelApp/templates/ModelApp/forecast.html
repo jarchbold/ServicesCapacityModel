@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>View | {{product}} Forecast</title>
+	<link href="{{ STATIC_URL }}style3.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}fonts.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}tables.css" rel="stylesheet" type="text/css" media="all"/>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<script src="http://malsup.github.com/chili-1.7.pack.js"></script>
+	<script src="{{ STATIC_URL }}subMenu.js"></script>
+	<script src="{{ STATIC_URL }}blockUI.js"></script>
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><span class="icon icon-globe icon-size"></span><a href="/ServicesFundingModel/home">AKAM<span>SVCS</span></a></h1>
+	<p>service operations | web applications</p>
+</div>
+<div id="wrapper" class="container">
+	<div id="menu" class="container">
+		<ul class="block1">
+			<li><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+			<li><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+			<li><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+			<li class="current_page_item"><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+			<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+			<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+			<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+		</ul>
+	</div>
+	<div id="three-column" class="container">
+		
+	<font size=1>
+	<div id="open" class="title">
+	<div id="sub-menu">
+	Toggle Product Menu
+	</div>
+	</div>
+	
+	<div id="panel">
+		<div id="menu2">
+		<ul class="block1">
+		<li><a href= {% url 'product' product %} style="text-decoration:none">{{product}} Product Properties</a></li>
+		<li><a href= {% url 'workingValue' product %} style="text-decoration:none">{{product}} Product Role Allocations</a></li>
+		<li><a href= {% url 'forecast' product 'Global' %} style="text-decoration:none">{{product}} Product Forecast</a></li>
+		</ul>
+		</div>
+		<div id="close">
+		(click to close)
+		</div>
+	</div>
+	</font>
+		
+		<div id="tbox1"></span>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Geography</option>
+				{% for geo in geos %}
+					<option value="/ServicesFundingModel/view/frcst/{{product}}/{{geo}}/">{{geo}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Division</option>
+				{% for division in divisions %}
+					<option value="/ServicesFundingModel/view/frcst/{{product}}/{{division}}/">{{division}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Region</option>
+				{% for region in regions %}
+					<option value="/ServicesFundingModel/view/frcst/{{product}}/{{region}}/">{{region}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Area</option>
+				{% for area in areas %}
+					<option value="/ServicesFundingModel/view/frcst/{{product}}/{{area}}/">{{area}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div style="float:left; width:180px;">
+			<select onChange="window.location = this.value" value="GO" class="button block">
+				<option selected="selected" disabled="disabled">Territory</option>
+				{% for territory in territories %}
+					<option value="/ServicesFundingModel/view/frcst/{{product}}/{{territory}}/">{{territory}}</option>
+				{% endfor %}
+			</select>
+		</div>
+			<style type="text/css">     
+				select {
+					height:35px;
+					width:150px;
+				}
+			</style>
+		
+		<div style="float:left;">
+			
+		<br></br>	
+			
+		<div class="title">
+			<h2><font color="grey">{{level}} |</font> {{mapping}}
+		</div>
+
+			<table class="TFtable" style="width:1100px">
+			<col width=220>
+			<tr>
+				<td></td>
+				{% for key,value in years.items %}
+					{% for v in value %}
+						<td><strong>{{key}}</strong></td>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+			<tr>
+				<td></td>
+				{% for key,value in years.items %}
+					{% for key,value in value.items %}
+						<td>Q{{key}}</td>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+			{% for key,value in forecasts.items %}
+				<tr>
+				<td align="left">{{key}}</td>
+					{% for key,value in value.items %}
+						{% for key,value in value.items %}
+							<td>{{value}}</td>
+						{% endfor %}
+					{% endfor %}
+				</tr>		
+			{% endfor %}
+			<tr>
+				<td align="left"><strong>TOTAL</strong></td>
+				{% for key,value in totals.items %}
+					{% for key,value in value.items %}
+						<td><strong>{{value}}</strong></td>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+
+			</table>
+		</div>
+		</div>
+
+	<div id="three-column" class="container">
+		<br></br>
+		<a href="/ServicesFundingModel/exportDetailsForecast/{{product}}/{{mapping}}" title="Export Details" style="text-decoration:none";><span class="icon icon-download"></span></a>
+	</div>
+</div>
+</div>
+<div id="copyright">
+	<p>Service Operations Web Applications | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% extends "ModelApp/base.html" %}
+
+{% block title %}AKAMSVCS | Setup{% endblock %}
+
+{% block menu %}
+	<li><a href="/ServicesFundingModel/home" accesskey="1" title="">Home</a></li>
+	<li><a href="/ServicesFundingModel/about" accesskey="2" title="">About</a></li>
+	<li  class="current_page_item"><a href="/ServicesFundingModel/setup" accesskey="3" title="">Model Setup</a></li>
+	<li><a href="/ServicesFundingModel/view" accesskey="3" title="">Model View</a></li>
+	<li><a href="/ServicesFundingModel/run/Global" accesskey="4" title="">Model Run</a></li>
+	<li><a href="/ServicesFundingModel/admin" accesskey="5" title="">Admin</a></li>
+	<li><a href="/ServicesFundingModel/contact" accesskey="6" title="">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+	<div id="three-column" class="container">
+		<div id="tbox1"> <span class="icon icon-paper-clip"></span>
+			<div class="title">
+				<h2>Organize</h2>
+			</div>
+			<p><strong>Organize</strong> contains all properties necessary to make updates to the model configuration, and updates here should be processed first.</p>
+
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Select Update</option>
+				<option value="GDRAT">GDRAT Mapping</option>
+				<option value="Function">Function</option>
+				<option value="Product">Platform Products</option>
+				<option value="ServicesMRR">Services MRR</option>
+				<option value="ServicesNRR">Services NRR</option>
+			</select>
+			
+			<style type="text/css">     
+				select {
+					height:50px;
+					width:300px;
+				}
+			</style>
+			
+		</div>
+		<div id="tbox2"> <span class="icon icon-umbrella"></span>
+			<div class="title">
+				<h2>Forecast</h2>
+			</div>
+			<p>Updates to <strong>Forecast</strong> will require users to enter platform and services product forecasts necessary to run the model.</p>
+			
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Select Update</option>
+				<option value="MRRContract">Contract MRR</option>
+				<option value="PlatformProductFrcst">Product Frcst</option>
+				<option value="GSSMRRFrcst">Services MRR Frcst</option>
+				<option value="GSSNRRFrcst">Services NRR Frcst</option>
+			</select>
+		
+		</div>
+		<div id="tbox3"> <span class="icon icon-group"></span>
+			<div class="title">
+				<h2>Headcount</h2>
+			</div>
+			<p>Updates to <strong>Headcount</strong> will require users to enter current and future resource availability necessary to create a hiring schedule.</p>
+			
+			<select onChange="window.location = this.value" value="GO" class="button">
+				<option selected="selected" disabled="disabled">Select Update</option>
+				<option value="HeadcountBIS">Headcount BIS</option>
+				<option value="HeadcountADJ">Headcount Adj</option>
+			</select>
+			
+		</div>
+	</div>
+{% endblock %}

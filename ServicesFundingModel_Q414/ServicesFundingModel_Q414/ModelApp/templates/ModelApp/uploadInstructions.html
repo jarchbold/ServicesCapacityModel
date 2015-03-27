@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{{name}} | Instructions</title>
+	<link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ STATIC_URL }}fonts.css" rel="stylesheet" type="text/css" media="all"/>
+</head>
+<body>
+	<div id="page">
+		<div class="title">
+			<h2><font size=4>{{name}} File Structure</h2></font size>
+			<span class="byline">		
+				<p>{% for key,value in instructions.items %}
+					<ul>
+						<font color="black" size=2>{{key}} = {{value}}</font>
+					</ul>
+					{% endfor %}</p>
+			</span>
+		</div>
+		<font size=1>ALWAYS MAKE SURE EXCEL FILES ARE SAVED AS <strong>".XLS"</strong> (that's <strong>2003 Excel</strong> format).</font size>
+	</div>
+</body>
+</html>
